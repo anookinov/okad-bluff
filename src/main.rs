@@ -1,6 +1,7 @@
 use bevy::prelude::*;
 
 const HOTEL_SPRITE: &str = "hotel.png";
+const HOSPITAL_SPRITE: &str = "hospital.png";
 
 fn main() {
     App::build()
