@@ -1,13 +1,13 @@
 use bevy::prelude::*;
 
-mod place;
+mod player;
 
-use place::CharacterPlugin;
+use player::PlayerPlugin;
 
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
-        .add_plugin(CharacterPlugin)
+        .add_plugin(PlayerPlugin)
         .add_startup_system(setup.system())
         .run();
 }
