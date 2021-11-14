@@ -2,12 +2,12 @@ use bevy::prelude::*;
 
 mod place;
 
-use place::PlacePlugin;
+use place::CharacterPlugin;
 
 fn main() {
     App::build()
         .add_plugins(DefaultPlugins)
-        .add_plugin(PlacePlugin)
+        .add_plugin(CharacterPlugin)
         .add_startup_system(setup.system())
         .run();
 }

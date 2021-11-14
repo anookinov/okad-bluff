@@ -1,8 +1,8 @@
 use bevy::prelude::*;
 
-pub struct PlacePlugin;
+pub struct CharacterPlugin;
 
-impl Plugin for PlacePlugin {
+impl Plugin for CharacterPlugin {
     fn build(&self, app: &mut AppBuilder) {
         app.add_startup_system(setup.system()).add_startup_stage(
             "game_setup_place",
@@ -11,8 +11,8 @@ impl Plugin for PlacePlugin {
     }
 }
 
-const HOTEL_SPRITE: &str = "hotel.png";
-const HOSPITAL_SPRITE: &str = "hospital.png";
+const DUKE_SPRITE: &str = "penguin.png";
+const CAPTAIN_SPRITE: &str = "lion.png";
 
 struct Materials {
     hotel: Handle<ColorMaterial>,
@@ -26,8 +26,8 @@ fn setup(
     mut materials: ResMut<Assets<ColorMaterial>>,
 ) {
     commands.insert_resource(Materials {
-        hotel: materials.add(asset_server.load(HOTEL_SPRITE).into()),
-        hospital: materials.add(asset_server.load(HOSPITAL_SPRITE).into()),
+        hotel: materials.add(asset_server.load(DUKE_SPRITE).into()),
+        hospital: materials.add(asset_server.load(CAPTAIN_SPRITE).into()),
     });
 }
 
