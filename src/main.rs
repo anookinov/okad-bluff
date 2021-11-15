@@ -31,7 +31,9 @@ fn main() {
 }
 
 fn setup(mut commands: Commands, mut windows: ResMut<Windows>) {
-    let window = windows.get_primary_mut().unwrap();
+    let window = windows
+        .get_primary_mut()
+        .expect("Cannot get a mutable primary window");
 
     commands.spawn_bundle(OrthographicCameraBundle::new_2d());
 
