@@ -16,18 +16,24 @@ struct WinSize {
 }
 
 fn main() {
-    App::build()
-        .insert_resource(WindowDescriptor {
-            title: "Okad Bluff!!".to_string(),
-            width: 1280.0,
-            height: 720.0,
-            ..Default::default()
-        })
-        .add_plugins(DefaultPlugins)
-        .add_plugin(PlayerPlugin)
-        .add_plugin(BoardPlugin)
-        .add_startup_system(setup.system())
-        .run();
+    let mut app = App::build();
+
+    app.add_plugins(DefaultPlugins);
+
+    // when building for Web, use WebGL2 rendering
+    #[cfg(target_arch = "wasm32")]
+    app.add_plugin(bevy_webgl2::WebGL2Plugin);
+
+    app.insert_resource(WindowDescriptor {
+        title: "Okad Bluff!!".to_string(),
+        width: 1280.0,
+        height: 720.0,
+        ..Default::default()
+    })
+    .add_plugin(PlayerPlugin)
+    .add_plugin(BoardPlugin)
+    .add_startup_system(setup.system())
+    .run();
 }
 
 fn setup(mut commands: Commands, mut windows: ResMut<Windows>) {
